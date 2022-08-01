@@ -7,11 +7,13 @@ def send_whatmsg_to_group(group: str, msg: str, hour: int, minute: int) -> None:
     pywhatkit.send_whatmsg_to_group(group, msg, hour, minute)
 
 def main():
-    msg_type = int(input("Enter 1 to send a message to a uSER and 2 to a GROUP: "))
+    msg_type = int(input("Enter 1 to send a message to a USER or 2 to send a GROUP message: "))
     if msg_type == 1:
         phone = input('Enter phone number: ')
+        # remove 0 at first index
         if phone[0]=='0':
             phone = phone[1::]
+        # check legnth of phone number
         while True:
             if len(phone) < 9:
                 raise ValueError('Invalid phone number: ')
